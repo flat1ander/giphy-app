@@ -5,12 +5,20 @@ import GiphyDisplay from './Components/GiphyDisplay';
 import Form from './Components/Form';
 
 function App() {
-  // const [giph, setGiph] = useState(null);
-  // const apiKey = 'kpQqheTXkWpU5hfpiIAMnzgpnswqQyLl'
+  const [giph, setGiph] = React.useState(null);
+  const apiKey = 'kpQqheTXkWpU5hfpiIAMnzgpnswqQyLl'
+
+  const getGiph = async (searchTerm) => {
+    const response = await fetch(
+      'https://api.giphy.com/v1/gifs/search?q=${searchTerm}&api_key=${apiKey}'
+    );
+    const data = await response.json();
+    setGiph(data);
+  }
 
   return (
     <div className="App">
-      <Form />
+      <Form giphySearch={getGiph}/>
       <GiphyDisplay />
     </div>
   );
