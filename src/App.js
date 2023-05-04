@@ -6,11 +6,11 @@ import Form from './Components/Form';
 
 function App() {
   const [giph, setGiph] = React.useState(null);
-  const apiKey = 'kpQqheTXkWpU5hfpiIAMnzgpnswqQyLl'
+  const API_KEY = 'kpQqheTXkWpU5hfpiIAMnzgpnswqQyLl';
 
   const getGiph = async (searchTerm) => {
     const response = await fetch(
-      'https://api.giphy.com/v1/gifs/search?q=${searchTerm}&api_key=${apiKey}'
+      `https://api.giphy.com/v1/gifs/search?q=${searchTerm}&api_key=${API_KEY}`
     );
     const data = await response.json();
     setGiph(data);
